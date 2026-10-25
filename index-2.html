@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مسابقات فوجی</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;900&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:#fff}
+*{box-sizing:border-box}
+body[data-t="home"]{--bg:#FFFFFF;--card:#FAF1DF;--ink:#2B1B18;--muted:#7C6A60;--line:#EADBB9;--acc:#C8372D;--on:#FFFFFF;--tx:#2B1B18;--ring:#C8372D}
+body[data-t="p1"]{--bg:#6B6C3B;--card:#F3EBD5;--ink:#262812;--muted:#5C5E3A;--line:#CFC7A8;--acc:#3E4420;--on:#F3EBD5;--tx:#F3EBD5;--ring:#F3EBD5}
+body[data-t="p2"]{--bg:#B3262B;--card:#F6ECD6;--ink:#3A1012;--muted:#7A4A40;--line:#DCC9A8;--acc:#6E1317;--on:#F6ECD6;--tx:#F6ECD6;--ring:#F6ECD6}
+body[data-t="p3"]{--bg:#F2E8D0;--card:#FBF6E8;--ink:#1C2552;--muted:#55608A;--line:#D8CDAF;--acc:#1F2A5A;--on:#F2E8D0;--tx:#1F2A5A;--ring:#1F2A5A}
+body[data-t="p4"]{--bg:#46257A;--card:#F3EAD6;--ink:#2A1650;--muted:#6A5890;--line:#D5C8B0;--acc:#2B1250;--on:#F3EAD6;--tx:#F3EAD6;--ring:#F3EAD6}
+body[data-t="p5"]{--bg:#0D0D0D;--card:#F2F2F2;--ink:#111111;--muted:#555555;--line:#BBBBBB;--acc:#111111;--on:#FFFFFF;--tx:#F2F2F2;--ring:#F2F2F2}
+body[data-t="p6"]{--bg:#1F4E8C;--card:#F2EAD3;--ink:#12263F;--muted:#4A5F7A;--line:#CDC6AC;--acc:#11294A;--on:#F2EAD3;--tx:#F2EAD3;--ring:#F2EAD3}
+body[data-t="p7"]{--bg:#A8201F;--card:#FBF3DC;--ink:#3A0E0D;--muted:#7A5A1A;--line:#C9A227;--acc:#C9A227;--on:#3A0E0D;--tx:#F6DD8A;--ring:#F6DD8A}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;line-height:1.8;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px 48px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}
+.brand{font-weight:900;color:var(--tx);font-size:1.05rem;padding:0 2px 6px}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:3px 3px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;font:inherit;font-size:.9rem;font-weight:600;color:var(--ink);background:var(--card);border:0;border-radius:999px;padding:6px 16px;cursor:pointer}
+.tabs button[aria-current="true"]{background:var(--acc);color:var(--on);box-shadow:0 0 0 2px var(--ring)}
+.tabs button:focus-visible{outline:3px solid var(--tx);outline-offset:3px}
+section{display:none;padding-top:24px}
+section.on{display:block}
+h2{font-size:1.4rem;margin:0 0 16px;font-weight:900;color:var(--tx)}
+.dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--acc);margin-left:.5em;vertical-align:.05em}
+.hero{text-align:center;padding:8px 0 20px}
+.hero svg{width:100%;max-width:340px;height:auto;display:block;margin:0 auto}
+.hero h1{margin:8px 0 0;font-size:clamp(2.4rem,11vw,3.8rem);font-weight:900;line-height:1.3}
+.hero p{margin:0;color:var(--muted)}
+.ban{margin:0 0 16px;border-radius:14px;overflow:hidden}
+.ban svg{display:block;width:100%;height:auto}
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:grid;grid-template-columns:1fr 54px 54px 54px;align-items:center;padding:14px 16px;border-top:1px solid var(--line);text-align:center}
+.row.head{font-size:1.25rem;background:var(--acc);color:var(--on);padding:10px 16px;border-top:0}
+.row .n{text-align:right;font-weight:600}
+.row .n b{display:inline-block;width:1.6em;color:var(--acc);font-weight:900}
+.row .g{font-weight:900;font-size:1.15rem}
+.row .z{color:var(--muted)}
+.team{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:14px}
+.team .fl{font-size:2rem;line-height:1}
+.team .t{flex:1;min-width:0}
+.team .t strong{display:block;font-size:1.05rem}
+.team .t span{color:var(--muted);font-size:.9rem}
+.chip{flex:none;font-size:.85rem;font-weight:600;border-radius:999px;padding:3px 12px;border:1px solid var(--line);color:var(--muted)}
+.chip.win{background:var(--acc);border-color:var(--acc);color:var(--on)}
+.soon{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:32px 16px;text-align:center}
+.soon .d{font-size:1.15rem;font-weight:900}
+.soon .s{margin-top:4px;color:var(--muted)}
+.soon{margin-bottom:12px}
+.tag{display:inline-block;border:1px solid var(--tx);color:var(--tx);border-radius:999px;padding:2px 14px;font-weight:600;font-size:.85rem;margin:0 0 14px}
+.desc{margin:0 0 20px;color:var(--tx)}
+.desc p{margin:0 0 14px;line-height:2}
+.desc p.last{font-weight:900}
+.dt{color:var(--tx);font-weight:600;margin:-8px 0 6px;font-size:.9rem}
+.cd{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.cd div{min-width:64px;padding:8px 6px;border-radius:12px;background:var(--acc);color:var(--on);text-align:center;line-height:1.4}
+.cd b{display:block;font-size:1.5rem;font-weight:900;font-variant-numeric:tabular-nums}
+.cd span{font-size:.75rem}
+.cd.done{display:block;text-align:center;font-weight:600}
+.next{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.nl{color:var(--muted);font-size:.9rem}
+.nn{font-weight:900;font-size:1.1rem}
+.go{margin-top:12px;font:inherit;font-weight:600;color:var(--acc);background:none;border:0;cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body data-t="home">
+<div class="wrap">
+  <nav><div class="brand">مسابقات فوجی ⛩</div><div class="tabs" id="tabs" role="tablist"></div></nav>
+  <main id="main"></main>
+</div>
+<script>
+var G={g:"var(--bg)"};
+var B={};
+B.p1=function(){var s='<rect width="360" height="110" fill="#5C5D31"/>';
+ [40,115,190,265,330].forEach(function(x,i){
+  s+='<rect x="'+x+'" width="9" height="110" fill="#F3EBD5" opacity=".92"/>'
+   +'<rect x="'+(x-1)+'" y="'+(28+i*7)+'" width="11" height="3" fill="#5C5D31"/>'
+   +'<rect x="'+(x-1)+'" y="'+(74-i*4)+'" width="11" height="3" fill="#5C5D31"/>'
+   +'<path d="M'+(x+9)+' '+(40+i*5)+'q26-18 52-6q-26 14-52 6z" fill="#A9AB6A"/>'
+   +'<path d="M'+x+' '+(86-i*3)+'q-26-16-50-4q26 12 50 4z" fill="#A9AB6A"/>';});
+ return s};
+B.p2=function(){var s='<defs><pattern id="sg" width="40" height="20" patternUnits="userSpaceOnUse"><g fill="#962024" stroke="#F6ECD6" stroke-width="1.6">';
+ [[0,10],[40,10],[20,20]].forEach(function(c){[18,12,6].forEach(function(r){s+='<circle cx="'+c[0]+'" cy="'+c[1]+'" r="'+r+'"/>'})});
+ return s+'</g></pattern></defs><rect width="360" height="110" fill="url(#sg)"/>'};
+B.p3=function(){return '<rect width="360" height="110" fill="#E9DDBE"/><circle cx="180" cy="64" r="40" fill="#1F2A5A" opacity=".12"/><g fill="#1F2A5A"><path d="M44 12Q180 36 316 12L308 28Q180 46 52 28Z"/><rect x="80" y="46" width="200" height="9"/><rect x="108" y="30" width="14" height="80"/><rect x="238" y="30" width="14" height="80"/><rect x="172" y="36" width="16" height="12"/></g>'};
+B.p4=function(){var s='<rect width="360" height="110" fill="#371C63"/><circle cx="270" cy="42" r="26" fill="#F3EAD6"/><circle cx="281" cy="36" r="22" fill="#371C63"/><g fill="#F3EAD6">';
+ [[40,20,2],[90,40,1.5],[150,14,2],[210,30,1.5],[330,18,2],[320,70,1.5]].forEach(function(p){s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+p[2]+'"/>'});
+ return s+'</g><g fill="none" stroke="#F3EAD6" stroke-width="2.5" stroke-linecap="round"><path d="M10 94C50 58 90 110 140 78S230 52 262 88"/><path d="M280 94q8-14 22-6q10-14 24-2q14-6 18 8"/><path d="M60 40q8-12 20-4q8-10 20 0"/></g><circle cx="262" cy="88" r="4" fill="#F3EAD6"/>'};
+B.p5=function(){var s='<rect width="360" height="110" fill="#000"/><g fill="#F2F2F2">',i,x;
+ for(x=6;x<360;x+=18){s+='<rect x="'+x+'" y="5" width="9" height="7" rx="1.5"/><rect x="'+x+'" y="98" width="9" height="7" rx="1.5"/>'}
+ s+='</g>';
+ var f=[[14,"#E8E8E8","#333"],[130,"#8C8C8C","#111"],[246,"#222","#EEE"]];
+ f.forEach(function(a,k){s+='<svg x="'+a[0]+'" y="20" width="100" height="70"><rect width="100" height="70" fill="'+a[1]+'"/>';
+  for(i=0;i<10;i++){s+='<line x1="'+(i*12)+'" y1="-5" x2="'+(i*12-18)+'" y2="75" stroke="'+a[2]+'" stroke-width="1"/>'}
+  if(k==1)s+='<circle cx="50" cy="35" r="18" fill="#111"/>';
+  s+='</svg>'});
+ return s};
+B.p6=function(){return '<rect width="360" height="110" fill="#173F73"/><circle cx="290" cy="36" r="24" fill="#F2EAD3"/><path d="M0 98Q90 90 180 98T360 98V110H0Z" fill="#0C2A52"/><g fill="#0C1C33"><polygon points="180,22 148,50 212,50"/><path d="M170 50L190 50L202 100L158 100Z"/></g><line x1="190" y1="74" x2="238" y2="92" stroke="#0C1C33" stroke-width="3" stroke-linecap="round"/>'};
+B.p7=function(){return '<rect width="360" height="110" fill="#8E1A19"/><circle cx="180" cy="55" r="40" fill="none" stroke="#C9A227" stroke-width="2"/><g stroke-linecap="round"><line x1="120" y1="100" x2="236" y2="12" stroke="#E8C766" stroke-width="5"/><line x1="240" y1="100" x2="124" y2="12" stroke="#E8C766" stroke-width="5"/><line x1="120" y1="100" x2="143" y2="82" stroke="#3A0E0D" stroke-width="8"/><line x1="240" y1="100" x2="217" y2="82" stroke="#3A0E0D" stroke-width="8"/></g><circle cx="143" cy="82" r="7" fill="#C9A227"/><circle cx="217" cy="82" r="7" fill="#C9A227"/>'};
+
+var players=[
+  {r:"۱",n:"محمدصادق",g:"۲",s:"۰",b:"۰"},
+  {r:"۱",n:"علی سجاد",g:"۲",s:"۰",b:"۰"},
+  {r:"۳",n:"امیرطاها",g:"۱",s:"۰",b:"۰"}
+];
+var events=[
+  {id:"p1",name:"جام ملت‌های آفریقا",teams:[
+    {f:"🇲🇦",t:"مغرب",p:"محمد صادق",s:"❌ حذف در یک‌چهارم نهایی",k:"out"},
+    {f:"🇨🇮",t:"ساحل عاج",p:"علی سجاد",s:"❌ حذف در یک‌هشتم نهایی",k:"out"},
+    {f:"🇸🇳",t:"سنگال",p:"طاها",s:"🥇 قهرمان",k:"win"}]},
+  {id:"p2",name:"کوپا دل ری",teams:[
+    {f:"🇪🇸",t:"اتلتیکو مادرید",p:"محمد صادق",s:"🥇 قهرمان",k:"win"},
+    {f:"🇪🇸",t:"بارسلونا",p:"علی سجاد",s:"🥇 قهرمان",k:"win"},
+    {f:"🇪🇸",t:"رئال مادرید",p:"طاها",s:"❌ حذف در نیمه‌نهایی",k:"out"}]},
+  {id:"p3",name:"لیگ نخبگان آسیا",date:"۲ آبان",teams:[
+    {f:"🇮🇷",t:"تراکتور",p:"محمد صادق",s:"🥇 قهرمان",k:"win"},
+    {f:"🇸🇦",t:"الهلال",p:"علی سجاد",s:"🥇 قهرمان",k:"win"},
+    {f:"🇸🇦",t:"الاهلی",p:"طاها",s:"❌ حذف در یک‌هشتم نهایی",k:"out"}]},
+  {id:"p4",name:"لیگ قهرمانان اروپا",date:"۴ آبان",time:"۱۶:۰۰",ts:"2026-10-26T16:00:00+03:30",teams:[
+    {f:"🇫🇷",t:"پاری سن ژرمن",p:"محمد صادق",s:"⏳ در انتظار",k:"wait"},
+    {f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",t:"لیورپول",p:"علی سجاد",s:"⏳ در انتظار",k:"wait"},
+    {f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",t:"آرسنال",p:"طاها",s:"⏳ در انتظار",k:"wait"}]},
+  {id:"p5",name:"لیگ اروپا",date:"۶ آبان",time:"۲۰:۰۰",ts:"2026-10-28T20:00:00+03:30",teams:[
+    {f:"🇹🇷",t:"بشیکتاش",p:"محمد صادق",s:"⏳ در انتظار",k:"wait"},
+    {f:"🇵🇹",t:"بنفیکا",p:"علی سجاد",s:"⏳ در انتظار",k:"wait"},
+    {f:"🇮🇹",t:"یوونتوس",p:"طاها",s:"⏳ در انتظار",k:"wait"}]},
+  {id:"p6",name:"کوپا ایتالیا",date:"۹ آبان",time:"۲۱:۰۰",ts:"2026-10-31T21:00:00+03:30",teams:[
+    {f:"🇮🇹",t:"یوونتوس",p:"محمد صادق",s:"⏳ در انتظار",k:"wait"},
+    {f:"🇮🇹",t:"اینتر",p:"علی سجاد",s:"⏳ در انتظار",k:"wait"},
+    {f:"🇮🇹",t:"ناپولی",p:"طاها",s:"⏳ در انتظار",k:"wait"}]},
+  {id:"p7",name:"یورو",date:"۱۰ آبان",time:"۱۶:۰۰",ts:"2026-11-01T16:00:00+03:30",teams:[
+    {f:"🇮🇹",t:"ایتالیا",p:"محمد صادق",s:"⏳ در انتظار",k:"wait"},
+    {f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",t:"انگلیس",p:"علی سجاد",s:"⏳ در انتظار",k:"wait"},
+    {f:"🇫🇷",t:"فرانسه",p:"طاها",s:"⏳ در انتظار",k:"wait"}]}
+];
+var D={
+ p1:{g:"🌿 طبیعت و جغرافیای ژاپن × جام ملت‌های آفریقا",t:"نخستین جهان فوجی، تصویری از ژاپن در میان کوهستان‌ها، جنگل‌ها، رودخانه‌ها، دریا و شکوفه‌های ساکورا است؛ جایی که طبیعت، آرامش و عظمت در کنار هم قرار می‌گیرند، البته با چاشنی جام ملت‌های آفریقا."},
+ p2:{g:"هنر سنتی ژاپن × جام حذفی اسپانیا",t:"«هر فرهنگ، داستان خودش را روایت می‌کند؛\nگاهی با کلمات،\nگاهی با رنگ،\nو گاهی با یک حرکت قلم.»\n\n«در ژاپن، هنر فقط چیزی برای دیدن نیست؛\nبخشی از زندگی است.»\n\n«از جوهر و کاغذ،\nتا سفال، پارچه و نقش؛\nهر اثر، بخشی از گذشته را با خود حمل می‌کند.»\n\n«دومین جهان فوجی،\nجایی میان سنت و هنر شکل می‌گیرد.»"},
+ p3:{g:"⛩️ شینتو × لیگ نخبگان آسیا",t:"«در ژاپن، میان انسان و طبیعت، پیوندی قدیمی وجود دارد.»\n\n«جایی که هر دروازه، ورود به جهانی دیگر است؛\nهر درخت، روحی در خود دارد؛\nو هر سکوت، معنایی پنهان.»\n\n«شینتو، فقط یک آیین نیست؛\nنگاهی است به جهانی که در آن طبیعت مقدس است.»\n\n«سومین جهان فوجی،\nاز میان دروازه‌های سرخ آغاز می‌شود.»"},
+ p4:{g:"اسطوره‌شناسی ژاپن × لیگ قهرمانان اروپا",t:"«پیش از آن‌که تاریخ نوشته شود،\nافسانه‌ها متولد شدند.\n\nاز دل آشوب، خدایان برخاستند؛\nاز میان تاریکی، موجوداتی فراتر از تصور پدیدار شدند؛\nو در مرز میان آسمان و زمین، اسطوره‌ها شکل گرفتند.\n\nاینجا، قدرت تنها در شمشیر نیست؛\nبلکه در افسانه‌هایی است که قرن‌ها زنده مانده‌اند.\n\nچهارمین جهان فوجی،\nجایی که اسطوره‌ها بیدار می‌شوند.»"},
+ p5:{g:"🎬 سینمای آکیرا کوروساوا × لیگ اروپا",t:"«گاهی یک فیلم، فقط یک داستان نیست؛\nپنجره‌ای است به جهانی دیگر.»\n\n«آکیرا کوروساوا، با قاب‌هایی از سکوت، باد، باران و انسان،\nسینما را به روایتی از افتخار، سرنوشت و انتخاب تبدیل کرد.»\n\n«در سینمای او، قهرمان همیشه پیروز نیست؛\nاما همیشه چیزی برای جنگیدن دارد.»\n\n«پنجمین جهان فوجی،\nاز دل پردهٔ سینما بیرون می‌آید.»"},
+ p6:{g:"⚔️ رونین × جام حذفی ایتالیا",t:"«روزی، شمشیرش برای اربابی بود؛\nاما روزی رسید که دیگر اربابی نداشت.»\n\n«نه پرچمی بالای سرش بود،\nنه سرزمینی که او را به خود زنجیر کند.»\n\n«تنها ماند؛\nبا یک شمشیر، یک راه، و سرنوشتی که خودش باید می‌نوشت.»\n\n«رونین، جنگجویی بدون ارباب؛\nمردی که آزادی را به جای وفاداری انتخاب کرد.»\n\n«ششمین جهان فوجی،\nدر جاده‌ای آغاز می‌شود که پایانش معلوم نیست.»"},
+ p7:{g:"سامورایی ژاپن × یورو",t:"در سرزمینی که افتخار، بالاتر از زندگی بود، جنگجویانی برخاستند که نامشان با وفاداری و شجاعت گره خورد.\n\nسامورایی؛ مردی که شمشیرش نماد قدرت بود، اما روحش با انضباط، وفاداری و فداکاری معنا پیدا می‌کرد.\n\nبرای او، پیروزی تنها رسیدن به مقصد نبود؛ بلکه ایستادن پای راهی بود که انتخاب کرده بود.\n\nاکنون، در آخرین جهان فوجی، راه سامورایی به بزرگ‌ترین میدان نبرد می‌رسد؛ جایی که افتخار یک ملت، در هر مسابقه به چالش کشیده می‌شود.\n\nهفتمین جهان فوجی؛ جایی که افسانه‌ها به افتخار تبدیل می‌شوند."}
+};
+function desc(id){var d=D[id],ps=d.t.split("\n\n");
+ return "<div class='tag'>"+d.g+"</div><div class='desc'>"+ps.map(function(p,i){return "<p"+(ps.length>1&&i==ps.length-1?" class='last'":"")+">"+p.replace(/\n/g,"<br>")+"</p>"}).join("")+"</div>"}
+var tabs=document.getElementById("tabs"),main=document.getElementById("main"),pages=[];
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+
+var home=el("section","",
+ '<div class="hero"><svg viewBox="0 0 360 150" role="img" aria-label="کوه فوجی و خورشید"><circle cx="250" cy="52" r="26" fill="#C8372D"/><path d="M0 150L120 40Q140 22 160 40L300 150Z" fill="#E7D7B2"/><path d="M120 40Q140 22 160 40L172 52L156 48L146 58L134 48L122 56L108 52Z" fill="#fff"/><path d="M0 150L90 100L170 150Z" fill="#F1E6CB"/></svg><h1>مسابقات فوجی ⛩</h1><p>نتایج رقابت‌ها</p></div><h2><span class="dot"></span>جدول زنده</h2>');
+var tbl=el("div","tbl");
+tbl.appendChild(el("div","row head","<span></span><span>🏆</span><span>🥈</span><span>🥉</span>"));
+players.forEach(function(p){
+  tbl.appendChild(el("div","row","<span class='n'><b>"+p.r+"</b>"+p.n+"</span><span class='g'>"+p.g+"</span><span class='z'>"+p.s+"</span><span class='z'>"+p.b+"</span>"));
+});
+home.appendChild(tbl);
+var nx=null;events.forEach(function(e){if(e.ts&&!nx&&new Date(e.ts)>Date.now())nx=e});
+if(nx){var nc=el("div","next","<div class='nl'>مسابقه بعدی</div><div class='nn'>"+nx.name+" · "+nx.date+" · ساعت "+nx.time+"</div><div class='cd' role='timer' data-ts='"+nx.ts+"'></div>");var go=el("button","go","دیدن صفحه مسابقه");go.type="button";go.onclick=function(){show(nx.id)};nc.appendChild(go);home.appendChild(nc)}
+pages.push({id:"home",tab:"صفحه اصلی",node:home});
+
+events.forEach(function(ev){
+  var s=el("section","","<div class='ban'><svg viewBox='0 0 360 110' aria-hidden='true'>"+B[ev.id]()+"</svg></div><h2>🏆 "+ev.name+"</h2>"+(ev.date&&!ev.ts?"<div class='dt'>"+ev.date+"</div>":"")+desc(ev.id));
+  if(ev.ts)s.appendChild(el("div","soon","<div class='d'>"+ev.date+" · ساعت "+ev.time+"</div><div class='s'>هنوز برگزار نشده</div><div class='cd' role='timer' data-ts='"+ev.ts+"'></div>"));
+  if(ev.teams){
+    ev.teams.forEach(function(t){
+      s.appendChild(el("div","team","<span class='fl'>"+t.f+"</span><div class='t'><strong>"+t.t+"</strong><span>"+t.p+"</span></div><span class='chip "+t.k+"'>"+t.s+"</span>"));
+    });
+  }
+  pages.push({id:ev.id,tab:ev.name,node:s});
+});
+
+pages.forEach(function(p){
+  var b=el("button","",p.tab);b.type="button";b.setAttribute("role","tab");
+  b.onclick=function(){show(p.id)};
+  p.btn=b;tabs.appendChild(b);main.appendChild(p.node);
+});
+function show(id){
+  var found=false;
+  pages.forEach(function(p){
+    var on=p.id===id;if(on)found=true;
+    p.node.className=on?"on":"";
+    if(on){p.btn.setAttribute("aria-current","true");p.btn.scrollIntoView({block:"nearest",inline:"center"})}
+    else p.btn.removeAttribute("aria-current");
+  });
+  if(!found)return show("home");
+  document.body.setAttribute("data-t",id);
+  document.documentElement.style.background=getComputedStyle(document.body).getPropertyValue("--bg");
+  window.scrollTo(0,0);
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+}
+function fa(n){return String(n).replace(/\d/g,function(d){return "۰۱۲۳۴۵۶۷۸۹".charAt(d)})}
+function cb(v,l){return "<div><b>"+fa(v<10&&l!=="روز"?"0"+v:v)+"</b><span>"+l+"</span></div>"}
+function tick(){var now=Date.now();document.querySelectorAll(".cd").forEach(function(c){
+ var ms=new Date(c.getAttribute("data-ts"))-now;
+ if(!(ms>0)){c.className="cd done";c.textContent="زمان برگزاری رسیده است ⏳";return}
+ var t=Math.floor(ms/1000);
+ c.innerHTML=cb(Math.floor(t/86400),"روز")+cb(Math.floor(t%86400/3600),"ساعت")+cb(Math.floor(t%3600/60),"دقیقه")+cb(t%60,"ثانیه")})}
+tick();setInterval(tick,1000);
+show((location.hash||"").slice(1)||"home");
+</script>
+</body>
+</html>
